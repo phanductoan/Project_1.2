@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/sys_bg_main"
+    tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="185dp"
+        android:layout_height="380dp"
+        android:layout_marginTop="100dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewTitle"
+            android:text="Smart Listening"
+            android:textSize="48dp"
+            android:layout_marginTop="15dp"
+            android:textColor="#027CC0"
+            android:textStyle="bold"
+            android:gravity="center_horizontal" />
+
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonPlay"
+            android:text="Play"
+            android:textColor="#ffffff"
+            android:background="@drawable/sys_button"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"/>
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonLoad"
+            android:text="Load"
+            android:textColor="#ffffff"
+            android:background="@drawable/sys_button"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"/>
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonHelp"
+            android:text="help"
+            android:textColor="#ffffff"
+            android:background="@drawable/sys_button"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"/>
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonQuit"
+            android:text="Quit"
+            android:textColor="#ffffff"
+            android:background="@drawable/sys_button"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+
+</LinearLayout>

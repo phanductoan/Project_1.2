@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/itemHelp"
+        android:title="Help"
+        android:icon="@drawable/sys_actionbar_help"
+        app:showAsAction="always"/>
+    <item android:id="@+id/itemInfo"
+        android:title="Info"
+        android:icon="@drawable/sys_actionbar_info"
+        app:showAsAction="always"/>
+</menu>

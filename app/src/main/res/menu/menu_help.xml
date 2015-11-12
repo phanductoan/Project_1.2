@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/itemVi"
+        android:title="Việt Nam"
+        android:icon="@drawable/sys_actionbar_vi"
+        app:showAsAction="always"/>
+    <item android:id="@+id/itemEn"
+        android:title="English"
+        android:icon="@drawable/sys_actionbar_usa"
+        app:showAsAction="always" />
+</menu>
