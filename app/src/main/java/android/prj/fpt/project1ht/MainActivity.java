@@ -35,6 +35,7 @@ public class MainActivity extends RootActivity {
     MediaPlayer mpClick;
     CallbackManager callbackManager;
     ShareDialog shareDialog;
+    int t = 6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
