@@ -217,7 +217,7 @@ public class MainActivity extends RootActivity {
     }
 
     public static void showInfo(Activity context){
-        Dialog dialog = new Dialog(context);
+        Dialog dialog = new Dialog(context, R.style.DialogSlideAnim);
         dialog.setTitle("Information");
         dialog.setContentView(R.layout.custom_dialog_info);
         dialog.show();

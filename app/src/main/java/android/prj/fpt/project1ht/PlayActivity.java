@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
@@ -105,6 +106,7 @@ public class PlayActivity extends RootActivity {
             @Override
             public void onClick(View v) {
                 ivPlay.startAnimation(animClick);
+                seekBar();
                 if (run <= listData.size() - 1) {
                     ident_a = getResources().getIdentifier(listData.get(run), "raw", getPackageName());
                     mp = MediaPlayer.create(getApplicationContext(), ident_a);
@@ -200,6 +202,7 @@ public class PlayActivity extends RootActivity {
     public void checkAnswer(View view) {
         switch (view.getId()) {
             case R.id.imageViewAnswer1:
+                seekBar();
                 if (ident_a == 0) {
                     showToast(this, "Please tap the headphone icon to hear the audio !");
                     break;
@@ -235,6 +238,7 @@ public class PlayActivity extends RootActivity {
                     break;
                 }
             case R.id.imageViewAnswer2:
+                seekBar();
                 if (ident_a == 0) {
                     showToast(this,"Please tap the headphone icon to hear the audio !");
                     break;
@@ -271,6 +275,7 @@ public class PlayActivity extends RootActivity {
                     break;
                 }
             case R.id.imageViewAnswer3:
+                seekBar();
                 if (ident_a == 0) {
                     showToast(this,"Please tap the headphone icon to hear the audio !");
                     break;
@@ -364,6 +369,9 @@ public class PlayActivity extends RootActivity {
         Button btnGoHomeRef = (Button) dialog.findViewById(R.id.btn_cus_Home);
         Button btnReplayRef = (Button) dialog.findViewById(R.id.btn_cus_Replay);
         Button btnNextRef = (Button) dialog.findViewById(R.id.btn_cus_Lever2);
+        TextView txtOver = (TextView)dialog.findViewById(R.id.fin);
+        Typeface face = Typeface.createFromAsset(getAssets(), "orange_juice.ttf");
+        txtOver.setTypeface(face);
 
         scoreRef.setText(Integer.toString(score));
         countRightRef.setText(Integer.toString(countRight));
@@ -407,6 +415,7 @@ public class PlayActivity extends RootActivity {
         ivStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                seekBar();
                 AlertDialog.Builder builder = new AlertDialog.Builder(PlayActivity.this, R.style.DialogSlideAnim);
                 builder.setTitle("Exit the lesson");
                 builder.setMessage("Are you sure exit this lesson ?");
@@ -462,6 +471,7 @@ public class PlayActivity extends RootActivity {
         ivPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                seekBar();
                 AlertDialog.Builder builder = new AlertDialog.Builder(PlayActivity.this, R.style.DialogSlideAnim);
                 builder.setTitle("Save the lesson");
                 builder.setMessage("Are you sure save this lesson?");
@@ -540,8 +550,15 @@ public class PlayActivity extends RootActivity {
         }
     }
 
+    public void seekBar(){
+        if (seekBarVolume.isShown()) {
+            seekBarVolume.setVisibility(View.INVISIBLE);
+        }
+    }
+
     @Override
     public void onBackPressed() {
+        seekBar();
         AlertDialog.Builder builder = new AlertDialog.Builder(PlayActivity.this, R.style.DialogSlideAnim);
         builder.setTitle("Exit the lesson");
         builder.setMessage("Are you sure exit this lesson ?");
@@ -567,9 +584,11 @@ public class PlayActivity extends RootActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.itemHelp:
+                seekBar();
                 startActivity(new Intent(PlayActivity.this,HelpActivity.class));
                 break;
             case R.id.itemInfo:
+                seekBar();
                 MainActivity.showInfo(PlayActivity.this);
                 break;
         }

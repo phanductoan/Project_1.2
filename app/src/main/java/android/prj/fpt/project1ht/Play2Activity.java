@@ -10,7 +10,13 @@ import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -42,12 +48,13 @@ public class Play2Activity extends RootActivity {
     int oncl = 0;
     Random r = new Random();
     String a, b, c, d, e, f, g, h, i ;
-    MediaPlayer mp, ov;
+    MediaPlayer mp, ov, god;
     LinearLayout line4, line5, line2;
     RelativeLayout checkOk;
     TextView screenplay, click;
     AudioManager audioManager;
     SeekBar seekBarVolume;
+    Animation animation1, animation2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +91,8 @@ public class Play2Activity extends RootActivity {
         seekBarVolume.setVisibility(View.INVISIBLE);
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
         audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
+        animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_play2);
+        animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.click);
         shuffleData();
         stopGame();
         toggleVolumeControl();
@@ -92,7 +101,7 @@ public class Play2Activity extends RootActivity {
     }
 
     public void playGames(){
-        CountDownTimer countDownTimer = new CountDownTimer(2000, 10) {
+        CountDownTimer countDownTimer = new CountDownTimer(2000, 1000) {
             public void onTick(long millisUntilFinished) {
                 checkOk.setVisibility(View.VISIBLE);
                 check.setVisibility(View.INVISIBLE);
@@ -125,12 +134,14 @@ public class Play2Activity extends RootActivity {
             public void onFinish() {
                 checkOk.setVisibility(View.INVISIBLE);
                 check.setVisibility(View.VISIBLE);
+                anim1();
                 bien();
             }
         }.start();
         img1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img1.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest1), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -162,6 +173,7 @@ public class Play2Activity extends RootActivity {
                     b = "1";
                     a = "1";
                     if (good == 4){
+                        mp.stop();
                         sceenTwo();
                     }
                     return;
@@ -178,6 +190,7 @@ public class Play2Activity extends RootActivity {
         img2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img2.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest2), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -209,6 +222,7 @@ public class Play2Activity extends RootActivity {
                     c = "1";
                     a = "2";
                     if (good == 4){
+                        mp.stop();
                         sceenTwo();
                     }
                     return;
@@ -225,6 +239,7 @@ public class Play2Activity extends RootActivity {
         img3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img3.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest3), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -256,6 +271,7 @@ public class Play2Activity extends RootActivity {
                     d = "1";
                     a = "3";
                     if (good == 4){
+                        mp.stop();
                         sceenTwo();
                     }
                     return;
@@ -272,6 +288,7 @@ public class Play2Activity extends RootActivity {
         img4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img4.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest4), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -303,6 +320,7 @@ public class Play2Activity extends RootActivity {
                     e = "1";
                     a = "4";
                     if (good == 4){
+                        mp.stop();
                         sceenTwo();
                     }
                     return;
@@ -319,6 +337,7 @@ public class Play2Activity extends RootActivity {
         img5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img5.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest2), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -350,6 +369,7 @@ public class Play2Activity extends RootActivity {
                     c = "1";
                     a = "5";
                     if (good == 4){
+                        mp.stop();
                         sceenTwo();
                     }
                     return;
@@ -366,6 +386,7 @@ public class Play2Activity extends RootActivity {
         img6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img6.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest4), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -397,6 +418,7 @@ public class Play2Activity extends RootActivity {
                     e = "1";
                     a = "6";
                     if (good == 4){
+                        mp.stop();
                         sceenTwo();
                     }
                     return;
@@ -413,6 +435,7 @@ public class Play2Activity extends RootActivity {
         img7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img7.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest1), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -444,6 +467,7 @@ public class Play2Activity extends RootActivity {
                     b = "1";
                     a = "7";
                     if (good == 4){
+                        mp.stop();
                         sceenTwo();
                     }
                     return;
@@ -460,6 +484,7 @@ public class Play2Activity extends RootActivity {
         img8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img8.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest3), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -491,6 +516,7 @@ public class Play2Activity extends RootActivity {
                     d = "1";
                     a = "8";
                     if (good == 4){
+                        mp.stop();
                         sceenTwo();
                     }
                     return;
@@ -507,10 +533,11 @@ public class Play2Activity extends RootActivity {
     }
 
     public void sceenTwo(){
+        mpOg();
         randomList1();
         oncl = 10;
         good = 0;
-        CountDownTimer countDownTimer = new CountDownTimer(2000, 10) {
+        CountDownTimer countDownTimer = new CountDownTimer(2000, 1000) {
             public void onTick(long millisUntilFinished) {
                 checkOk.setVisibility(View.VISIBLE);
                 gOcl1();
@@ -520,7 +547,8 @@ public class Play2Activity extends RootActivity {
                 click.setText(Integer.toString(oncl));
                 checkOk.setVisibility(View.INVISIBLE);
                 bien();
-                CountDownTimer countDownTimer = new CountDownTimer(1000, 10) {
+                anim1();
+                CountDownTimer countDownTimer = new CountDownTimer(2000, 1000) {
                     public void onTick(long millisUntilFinished) {
                         checkOk.setVisibility(View.VISIBLE);
                         check.setVisibility(View.INVISIBLE);
@@ -535,7 +563,7 @@ public class Play2Activity extends RootActivity {
                         img6.setImageResource(ident_3);
                         img7.setImageResource(ident_1);
                         img8.setImageResource(ident_4);
-                        CountDownTimer countDownTimer = new CountDownTimer(1000, 10) {
+                        CountDownTimer countDownTimer = new CountDownTimer(1000, 1000) {
                             public void onTick(long millisUntilFinished) {
                                 checkOk.setVisibility(View.VISIBLE);
                                 check.setVisibility(View.INVISIBLE);
@@ -554,6 +582,7 @@ public class Play2Activity extends RootActivity {
         img1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img1.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest1), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -585,6 +614,7 @@ public class Play2Activity extends RootActivity {
                     b = "1";
                     a = "1";
                     if (good == 4){
+                        mp.stop();
                         sceenThree();
                     }
                     return;
@@ -601,6 +631,7 @@ public class Play2Activity extends RootActivity {
         img2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img2.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest2), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -632,6 +663,7 @@ public class Play2Activity extends RootActivity {
                     c = "1";
                     a = "2";
                     if (good == 4){
+                        mp.stop();
                         sceenThree();
                     }
                     return;
@@ -648,6 +680,7 @@ public class Play2Activity extends RootActivity {
         img3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img3.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest3), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -679,6 +712,7 @@ public class Play2Activity extends RootActivity {
                     d = "1";
                     a = "3";
                     if (good == 4){
+                        mp.stop();
                         sceenThree();
                     }
                     return;
@@ -695,6 +729,7 @@ public class Play2Activity extends RootActivity {
         img4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img4.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest2), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -726,6 +761,7 @@ public class Play2Activity extends RootActivity {
                     c = "1";
                     a = "4";
                     if (good == 4){
+                        mp.stop();
                         sceenThree();
                     }
                     return;
@@ -742,6 +778,7 @@ public class Play2Activity extends RootActivity {
         img5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img5.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest4), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -773,6 +810,7 @@ public class Play2Activity extends RootActivity {
                     e = "1";
                     a = "5";
                     if (good == 4){
+                        mp.stop();
                         sceenThree();
                     }
                     return;
@@ -789,6 +827,7 @@ public class Play2Activity extends RootActivity {
         img6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img6.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest3), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -820,6 +859,7 @@ public class Play2Activity extends RootActivity {
                     d = "1";
                     a = "6";
                     if (good == 4) {
+                        mp.stop();
                         sceenThree();
                     }
                     return;
@@ -836,6 +876,7 @@ public class Play2Activity extends RootActivity {
         img7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img7.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest1), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -867,6 +908,7 @@ public class Play2Activity extends RootActivity {
                     b = "1";
                     a = "7";
                     if (good == 4){
+                        mp.stop();
                         sceenThree();
                     }
                     return;
@@ -883,6 +925,7 @@ public class Play2Activity extends RootActivity {
         img8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img8.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest4), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -914,6 +957,7 @@ public class Play2Activity extends RootActivity {
                     e = "1";
                     a = "8";
                     if (good == 4){
+                        mp.stop();
                         sceenThree();
                     }
                     return;
@@ -944,7 +988,8 @@ public class Play2Activity extends RootActivity {
                 screenplay.setText("3");
                 checkOk.setVisibility(View.INVISIBLE);
                 bien();
-                CountDownTimer countDownTimer = new CountDownTimer(1000, 10) {
+                anim1();
+                CountDownTimer countDownTimer = new CountDownTimer(2000, 10) {
                     public void onTick(long millisUntilFinished) {
                         checkOk.setVisibility(View.VISIBLE);
                         check.setVisibility(View.INVISIBLE);
@@ -982,6 +1027,7 @@ public class Play2Activity extends RootActivity {
         img1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img1.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest1), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -1013,6 +1059,7 @@ public class Play2Activity extends RootActivity {
                     b = "1";
                     a = "1";
                     if (good == 6){
+                        mp.stop();
                         sceenForw();
                     }
                     return;
@@ -1029,6 +1076,7 @@ public class Play2Activity extends RootActivity {
         img2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img2.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest2), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -1038,6 +1086,7 @@ public class Play2Activity extends RootActivity {
                         mp.release();
                     }
                 });
+                img2.startAnimation(animation2);
                 seekBar();
                 if (c.equals("1")) {
                     a = "2";
@@ -1060,6 +1109,7 @@ public class Play2Activity extends RootActivity {
                     c = "1";
                     a = "2";
                     if (good == 6) {
+                        mp.stop();
                         sceenForw();
                     }
                     return;
@@ -1076,6 +1126,7 @@ public class Play2Activity extends RootActivity {
         img3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img3.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest3), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -1107,6 +1158,7 @@ public class Play2Activity extends RootActivity {
                     d = "1";
                     a = "3";
                     if (good == 6) {
+                        mp.stop();
                         sceenForw();
                     }
                     return;
@@ -1123,6 +1175,7 @@ public class Play2Activity extends RootActivity {
         img4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img4.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest2), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -1154,6 +1207,7 @@ public class Play2Activity extends RootActivity {
                     c = "1";
                     a = "4";
                     if (good == 6) {
+                        mp.stop();
                         sceenForw();
                     }
                     return;
@@ -1170,6 +1224,7 @@ public class Play2Activity extends RootActivity {
         img5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img5.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest4), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -1201,6 +1256,7 @@ public class Play2Activity extends RootActivity {
                     e = "1";
                     a = "5";
                     if (good == 6){
+                        mp.stop();
                         sceenForw();
                     }
                     return;
@@ -1217,6 +1273,7 @@ public class Play2Activity extends RootActivity {
         img6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img6.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest3), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -1248,6 +1305,7 @@ public class Play2Activity extends RootActivity {
                     d = "1";
                     a = "6";
                     if (good == 6){
+                        mp.stop();
                         sceenForw();
                     }
                     return;
@@ -1264,6 +1322,7 @@ public class Play2Activity extends RootActivity {
         img7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img7.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest1), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -1295,6 +1354,7 @@ public class Play2Activity extends RootActivity {
                     b = "1";
                     a = "7";
                     if (good == 6) {
+                        mp.stop();
                         sceenForw();
                     }
                     return;
@@ -1311,6 +1371,7 @@ public class Play2Activity extends RootActivity {
         img8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img8.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest5), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -1342,6 +1403,7 @@ public class Play2Activity extends RootActivity {
                     f = "1";
                     a = "8";
                     if (good == 6){
+                        mp.stop();
                         sceenForw();
                     }
                     return;
@@ -1358,6 +1420,7 @@ public class Play2Activity extends RootActivity {
         img9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img9.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest6), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -1389,6 +1452,7 @@ public class Play2Activity extends RootActivity {
                     g = "1";
                     a = "9";
                     if (good == 6){
+                        mp.stop();
                         sceenForw();
                     }
                     return;
@@ -1405,6 +1469,7 @@ public class Play2Activity extends RootActivity {
         img10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img10.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest5), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -1436,6 +1501,7 @@ public class Play2Activity extends RootActivity {
                     f = "1";
                     a = "10";
                     if (good == 6){
+                        mp.stop();
                         sceenForw();
                     }
                     return;
@@ -1452,6 +1518,7 @@ public class Play2Activity extends RootActivity {
         img11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img11.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest4), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -1483,6 +1550,7 @@ public class Play2Activity extends RootActivity {
                     e = "1";
                     a = "11";
                     if (good == 6) {
+                        mp.stop();
                         sceenForw();
                     }
                     return;
@@ -1499,6 +1567,7 @@ public class Play2Activity extends RootActivity {
         img12.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img12.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest6), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -1530,6 +1599,7 @@ public class Play2Activity extends RootActivity {
                     g = "1";
                     a = "12";
                     if (good == 6) {
+                        mp.stop();
                         sceenForw();
                     }
                     return;
@@ -1559,7 +1629,8 @@ public class Play2Activity extends RootActivity {
                 screenplay.setText("4");
                 checkOk.setVisibility(View.INVISIBLE);
                 bien();
-                CountDownTimer countDownTimer = new CountDownTimer(1000, 10) {
+                anim1();
+                CountDownTimer countDownTimer = new CountDownTimer(2000, 10) {
                     public void onTick(long millisUntilFinished) {
                         checkOk.setVisibility(View.VISIBLE);
                         check.setVisibility(View.INVISIBLE);
@@ -1597,6 +1668,7 @@ public class Play2Activity extends RootActivity {
         img1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img1.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest1), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -1628,6 +1700,7 @@ public class Play2Activity extends RootActivity {
                     b = "1";
                     a = "1";
                     if (good == 6){
+                        mp.stop();
                         sceenFile();
                     }
                     return;
@@ -1644,6 +1717,7 @@ public class Play2Activity extends RootActivity {
         img2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img2.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest2), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -1654,34 +1728,35 @@ public class Play2Activity extends RootActivity {
                     }
                 });
                 seekBar();
-                if (c.equals("1")){
+                if (c.equals("1")) {
                     a = "2";
                     return;
                 }
-                if (a.equals("7")){
+                if (a.equals("7")) {
                     img2.setImageResource(ident_2);
                     img7.setImageResource(ident_2);
                     good++;
                     oncl--;
                     click.setText(Integer.toString(oncl));
-                    if (oncl == 0 && good != 6){
+                    if (oncl == 0 && good != 6) {
                         gameOver();
                         return;
                     }
-                    if (oncl == -1){
+                    if (oncl == -1) {
                         gameOver();
                         return;
                     }
                     c = "1";
                     a = "2";
-                    if (good == 6){
+                    if (good == 6) {
+                        mp.stop();
                         sceenFile();
                     }
                     return;
                 }
                 oncl--;
                 click.setText(Integer.toString(oncl));
-                if (oncl == 0){
+                if (oncl == 0) {
                     gameOver();
                     return;
                 }
@@ -1691,6 +1766,7 @@ public class Play2Activity extends RootActivity {
         img3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img3.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest3), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -1722,6 +1798,7 @@ public class Play2Activity extends RootActivity {
                     d = "1";
                     a = "3";
                     if (good == 6) {
+                        mp.stop();
                         sceenFile();
                     }
                     return;
@@ -1738,6 +1815,7 @@ public class Play2Activity extends RootActivity {
         img4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img4.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest5), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -1769,6 +1847,7 @@ public class Play2Activity extends RootActivity {
                     e = "1";
                     a = "4";
                     if (good == 6){
+                        mp.stop();
                         sceenFile();
                     }
                     return;
@@ -1785,6 +1864,7 @@ public class Play2Activity extends RootActivity {
         img5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img5.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest4), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -1816,6 +1896,7 @@ public class Play2Activity extends RootActivity {
                     f = "1";
                     a = "5";
                     if (good == 6){
+                        mp.stop();
                         sceenFile();
                     }
                     return;
@@ -1832,6 +1913,7 @@ public class Play2Activity extends RootActivity {
         img6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img6.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest6), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -1863,6 +1945,7 @@ public class Play2Activity extends RootActivity {
                     g = "1";
                     a = "6";
                     if (good == 6){
+                        mp.stop();
                         sceenFile();
                     }
                     return;
@@ -1879,6 +1962,7 @@ public class Play2Activity extends RootActivity {
         img7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img7.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest2), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -1910,6 +1994,7 @@ public class Play2Activity extends RootActivity {
                     c = "1";
                     a = "7";
                     if (good == 6){
+                        mp.stop();
                         sceenFile();
                     }
                     return;
@@ -1926,6 +2011,7 @@ public class Play2Activity extends RootActivity {
         img8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img8.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest1), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -1957,6 +2043,7 @@ public class Play2Activity extends RootActivity {
                     b = "1";
                     a = "8";
                     if (good == 6){
+                        mp.stop();
                         sceenFile();
                     }
                     return;
@@ -1973,6 +2060,7 @@ public class Play2Activity extends RootActivity {
         img9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img9.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest3), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -2004,6 +2092,7 @@ public class Play2Activity extends RootActivity {
                     d = "1";
                     a = "9";
                     if (good == 6){
+                        mp.stop();
                         sceenFile();
                     }
                     return;
@@ -2020,6 +2109,7 @@ public class Play2Activity extends RootActivity {
         img10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img10.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest4), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -2051,6 +2141,7 @@ public class Play2Activity extends RootActivity {
                     f = "1";
                     a = "10";
                     if (good == 6){
+                        mp.stop();
                         sceenFile();
                     }
                     return;
@@ -2067,6 +2158,7 @@ public class Play2Activity extends RootActivity {
         img11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img11.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest5), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -2098,6 +2190,7 @@ public class Play2Activity extends RootActivity {
                     e = "1";
                     a = "11";
                     if (good == 6){
+                        mp.stop();
                         sceenFile();
                     }
                     return;
@@ -2114,6 +2207,7 @@ public class Play2Activity extends RootActivity {
         img12.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img12.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest6), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -2145,6 +2239,7 @@ public class Play2Activity extends RootActivity {
                     g = "1";
                     a = "12";
                     if (good == 6){
+                        mp.stop();
                         sceenFile();
                     }
                     return;
@@ -2175,7 +2270,8 @@ public class Play2Activity extends RootActivity {
                 screenplay.setText("5");
                 checkOk.setVisibility(View.INVISIBLE);
                 bien();
-                CountDownTimer countDownTimer = new CountDownTimer(1000, 10) {
+                anim1();
+                CountDownTimer countDownTimer = new CountDownTimer(2000, 10) {
                     public void onTick(long millisUntilFinished) {
                         checkOk.setVisibility(View.VISIBLE);
                         check.setVisibility(View.INVISIBLE);
@@ -2217,6 +2313,7 @@ public class Play2Activity extends RootActivity {
         img1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img1.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest1), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -2248,6 +2345,7 @@ public class Play2Activity extends RootActivity {
                     b = "1";
                     a = "1";
                     if (good == 8){
+                        mp.stop();
                         sceenSix();
                     }
                     return;
@@ -2264,6 +2362,7 @@ public class Play2Activity extends RootActivity {
         img2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img2.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest2), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -2295,6 +2394,7 @@ public class Play2Activity extends RootActivity {
                     c = "1";
                     a = "2";
                     if (good == 8) {
+                        mp.stop();
                         sceenSix();
                     }
                     return;
@@ -2311,6 +2411,7 @@ public class Play2Activity extends RootActivity {
         img3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img3.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest3), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -2342,6 +2443,7 @@ public class Play2Activity extends RootActivity {
                     d = "1";
                     a = "3";
                     if (good == 8) {
+                        mp.stop();
                         sceenSix();
                     }
                     return;
@@ -2358,6 +2460,7 @@ public class Play2Activity extends RootActivity {
         img4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img4.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest5), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -2389,6 +2492,7 @@ public class Play2Activity extends RootActivity {
                     e = "1";
                     a = "4";
                     if (good == 8) {
+                        mp.stop();
                         sceenSix();
                     }
                     return;
@@ -2405,6 +2509,7 @@ public class Play2Activity extends RootActivity {
         img5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img5.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest4), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -2436,6 +2541,7 @@ public class Play2Activity extends RootActivity {
                     f = "1";
                     a = "5";
                     if (good == 8){
+                        mp.stop();
                         sceenSix();
                     }
                     return;
@@ -2452,6 +2558,7 @@ public class Play2Activity extends RootActivity {
         img6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img6.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest6), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -2483,6 +2590,7 @@ public class Play2Activity extends RootActivity {
                     g = "1";
                     a = "6";
                     if (good == 8){
+                        mp.stop();
                         sceenSix();
                     }
                     return;
@@ -2499,6 +2607,7 @@ public class Play2Activity extends RootActivity {
         img7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img7.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest2), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -2530,6 +2639,7 @@ public class Play2Activity extends RootActivity {
                     c = "1";
                     a = "7";
                     if (good == 8){
+                        mp.stop();
                         sceenSix();
                     }
                     return;
@@ -2546,6 +2656,7 @@ public class Play2Activity extends RootActivity {
         img8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img8.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest1), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -2577,6 +2688,7 @@ public class Play2Activity extends RootActivity {
                     b = "1";
                     a = "8";
                     if (good == 8){
+                        mp.stop();
                         sceenSix();
                     }
                     return;
@@ -2593,6 +2705,7 @@ public class Play2Activity extends RootActivity {
         img9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img9.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest3), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -2624,6 +2737,7 @@ public class Play2Activity extends RootActivity {
                     d = "1";
                     a = "9";
                     if (good == 8){
+                        mp.stop();
                         sceenSix();
                     }
                     return;
@@ -2640,6 +2754,7 @@ public class Play2Activity extends RootActivity {
         img10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img10.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest4), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -2671,6 +2786,7 @@ public class Play2Activity extends RootActivity {
                     f = "1";
                     a = "10";
                     if (good == 8){
+                        mp.stop();
                         sceenSix();
                     }
                     return;
@@ -2687,6 +2803,7 @@ public class Play2Activity extends RootActivity {
         img11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img11.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest5), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -2718,6 +2835,7 @@ public class Play2Activity extends RootActivity {
                     e = "1";
                     a = "11";
                     if (good == 8){
+                        mp.stop();
                         sceenSix();
                     }
                     return;
@@ -2734,6 +2852,7 @@ public class Play2Activity extends RootActivity {
         img12.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img12.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest6), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -2765,6 +2884,7 @@ public class Play2Activity extends RootActivity {
                     g = "1";
                     a = "12";
                     if (good == 8){
+                        mp.stop();
                         sceenSix();
                     }
                     return;
@@ -2781,6 +2901,7 @@ public class Play2Activity extends RootActivity {
         img13.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img13.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest7), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -2812,6 +2933,7 @@ public class Play2Activity extends RootActivity {
                     h = "1";
                     a = "13";
                     if (good == 8){
+                        mp.stop();
                         sceenSix();
                     }
                     return;
@@ -2828,6 +2950,7 @@ public class Play2Activity extends RootActivity {
         img14.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img14.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest8), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -2859,6 +2982,7 @@ public class Play2Activity extends RootActivity {
                     i = "1";
                     a = "14";
                     if (good == 8){
+                        mp.stop();
                         sceenSix();
                     }
                     return;
@@ -2875,6 +2999,7 @@ public class Play2Activity extends RootActivity {
         img15.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img15.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest8), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -2906,6 +3031,7 @@ public class Play2Activity extends RootActivity {
                     i = "1";
                     a = "15";
                     if (good == 8){
+                        mp.stop();
                         sceenSix();
                     }
                     return;
@@ -2922,6 +3048,7 @@ public class Play2Activity extends RootActivity {
         img16.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img16.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest7), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -2953,6 +3080,7 @@ public class Play2Activity extends RootActivity {
                     h = "1";
                     a = "16";
                     if (good == 8){
+                        mp.stop();
                         sceenSix();
                     }
                     return;
@@ -2982,7 +3110,8 @@ public class Play2Activity extends RootActivity {
                 screenplay.setText("6");
                 checkOk.setVisibility(View.INVISIBLE);
                 bien();
-                CountDownTimer countDownTimer = new CountDownTimer(1000, 10) {
+                anim1();
+                CountDownTimer countDownTimer = new CountDownTimer(2000, 10) {
                     public void onTick(long millisUntilFinished) {
                         checkOk.setVisibility(View.VISIBLE);
                         check.setVisibility(View.INVISIBLE);
@@ -3024,6 +3153,7 @@ public class Play2Activity extends RootActivity {
         img1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img1.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest1), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -3071,6 +3201,7 @@ public class Play2Activity extends RootActivity {
         img2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img2.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest2), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -3081,34 +3212,34 @@ public class Play2Activity extends RootActivity {
                     }
                 });
                 seekBar();
-                if (c.equals("1")){
+                if (c.equals("1")) {
                     a = "2";
                     return;
                 }
-                if (a.equals("14")){
+                if (a.equals("14")) {
                     img2.setImageResource(ident_2);
                     img14.setImageResource(ident_2);
                     good++;
                     oncl--;
                     click.setText(Integer.toString(oncl));
-                    if (oncl == 0 && good != 8){
+                    if (oncl == 0 && good != 8) {
                         gameOver();
                         return;
                     }
-                    if (oncl == -1){
+                    if (oncl == -1) {
                         gameOver();
                         return;
                     }
                     c = "1";
                     a = "2";
-                    if (good == 8){
+                    if (good == 8) {
                         alertCompleteGame1();
                     }
                     return;
                 }
                 oncl--;
                 click.setText(Integer.toString(oncl));
-                if (oncl == 0){
+                if (oncl == 0) {
                     gameOver();
                     return;
                 }
@@ -3118,6 +3249,7 @@ public class Play2Activity extends RootActivity {
         img3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img3.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest3), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -3165,6 +3297,7 @@ public class Play2Activity extends RootActivity {
         img4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img4.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest8), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -3212,6 +3345,7 @@ public class Play2Activity extends RootActivity {
         img5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img5.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest7), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -3259,6 +3393,7 @@ public class Play2Activity extends RootActivity {
         img6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img6.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest5), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -3306,6 +3441,7 @@ public class Play2Activity extends RootActivity {
         img7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img7.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest4), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -3353,6 +3489,7 @@ public class Play2Activity extends RootActivity {
         img8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img8.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest6), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -3400,6 +3537,7 @@ public class Play2Activity extends RootActivity {
         img9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img9.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest7), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -3447,6 +3585,7 @@ public class Play2Activity extends RootActivity {
         img10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img10.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest8), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -3494,6 +3633,7 @@ public class Play2Activity extends RootActivity {
         img11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img11.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest5), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -3541,6 +3681,7 @@ public class Play2Activity extends RootActivity {
         img12.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img12.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest4), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -3588,6 +3729,7 @@ public class Play2Activity extends RootActivity {
         img13.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img13.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest6), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -3635,6 +3777,7 @@ public class Play2Activity extends RootActivity {
         img14.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img14.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest2), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -3682,6 +3825,7 @@ public class Play2Activity extends RootActivity {
         img15.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img15.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest1), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -3729,6 +3873,7 @@ public class Play2Activity extends RootActivity {
         img16.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img16.startAnimation(animation2);
                 r_audio = getResources().getIdentifier(listData.get(r_rest3), "raw", getPackageName());
                 mp = MediaPlayer.create(getApplicationContext(), r_audio);
                 mp.start();
@@ -3869,8 +4014,8 @@ public class Play2Activity extends RootActivity {
         final Dialog dialog = new Dialog(Play2Activity.this, R.style.DialogSlideAnim);
         dialog.setTitle("GameOver !");
         dialog.setContentView(R.layout.custom_dialog_play2);
-        ImageView btnHome = (ImageView)dialog.findViewById(R.id.Home);
-        ImageView btnReplay = (ImageView)dialog.findViewById(R.id.Replay);
+        Button btnHome = (Button)dialog.findViewById(R.id.Home);
+        Button btnReplay = (Button)dialog.findViewById(R.id.Replay);
         TextView txtOver = (TextView)dialog.findViewById(R.id.gameover);
         Typeface face = Typeface.createFromAsset(getAssets(), "orange_juice.ttf");
         txtOver.setTypeface(face);
@@ -3895,6 +4040,7 @@ public class Play2Activity extends RootActivity {
     }
 
     public void alertCompleteGame1() {
+        mp.stop();
         MediaPlayer mpAlert;
         mpAlert = MediaPlayer.create(Play2Activity.this, R.raw.sys_congratulation);
         mpAlert.setVolume(0.5f, 0.5f);
@@ -3910,6 +4056,9 @@ public class Play2Activity extends RootActivity {
         dialog.setContentView(R.layout.custom_dialog_complete2);
         dialog.setCanceledOnTouchOutside(false); // not permit to touch outside
         Button btnGoHomeRef = (Button) dialog.findViewById(R.id.btn_cus_Home);
+        TextView txtOver = (TextView)dialog.findViewById(R.id.fin);
+        Typeface face = Typeface.createFromAsset(getAssets(), "orange_juice.ttf");
+        txtOver.setTypeface(face);
 
         btnGoHomeRef.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -3918,6 +4067,14 @@ public class Play2Activity extends RootActivity {
             }
         });
         dialog.show();
+        checkOk.setVisibility(View.VISIBLE);
+        check.setVisibility(View.INVISIBLE);
+        line2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertCompleteGame1();
+            }
+        });
     }
 
     public void mpOv(){
@@ -3927,6 +4084,17 @@ public class Play2Activity extends RootActivity {
             @Override
             public void onCompletion(MediaPlayer mp) {
                 ov.release();
+            }
+        });
+    }
+
+    public void mpOg(){
+        god = MediaPlayer.create(Play2Activity.this, R.raw.good);
+        god.start();
+        god.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                god.release();
             }
         });
     }
@@ -3989,6 +4157,25 @@ public class Play2Activity extends RootActivity {
         img14.setImageResource(R.drawable.sys_ic_empty);
         img15.setImageResource(R.drawable.sys_ic_empty);
         img16.setImageResource(R.drawable.sys_ic_empty);
+    }
+
+    public void anim1(){
+        img1.startAnimation(animation1);
+        img2.startAnimation(animation1);
+        img3.startAnimation(animation1);
+        img4.startAnimation(animation1);
+        img5.startAnimation(animation1);
+        img6.startAnimation(animation1);
+        img7.startAnimation(animation1);
+        img8.startAnimation(animation1);
+        img9.startAnimation(animation1);
+        img10.startAnimation(animation1);
+        img11.startAnimation(animation1);
+        img12.startAnimation(animation1);
+        img13.startAnimation(animation1);
+        img14.startAnimation(animation1);
+        img15.startAnimation(animation1);
+        img16.startAnimation(animation1);
     }
 
     public void stopGame() {
@@ -4070,5 +4257,21 @@ public class Play2Activity extends RootActivity {
         });
         builder.setNegativeButton("No", null);
         builder.show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_play2, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.itemInfo:
+                MainActivity.showInfo(Play2Activity.this);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
