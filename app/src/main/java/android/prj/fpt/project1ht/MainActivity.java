@@ -147,6 +147,9 @@ public class MainActivity extends RootActivity {
         } else if (type.equals("position")) {
             int count = share.getInt("count", 0);
             int size = share.getInt("size", 0);
+            if (count == 50){
+                count = 49;
+            }
             return Integer.toString(count + 1) + "/" + Integer.toString(size);
 
         } else if(type.equals("checkShare")){

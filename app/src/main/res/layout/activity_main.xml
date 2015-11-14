@@ -7,7 +7,7 @@
     android:background="@drawable/sys_bg_main"
     tools:context=".MainActivity">
     <LinearLayout
-        android:layout_width="195dp"
+        android:layout_width="190dp"
         android:layout_height="390dp"
         android:layout_marginTop="100dp"
         android:orientation="vertical">
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/textViewTitle"
             android:text="Smart Listening"
-            android:textSize="46dp"
+            android:textSize="45dp"
             android:layout_marginTop="15dp"
             android:textColor="#027CC0"
             android:textStyle="bold"
@@ -29,6 +29,7 @@
             android:id="@+id/buttonPlay"
             android:text="Play"
             android:textColor="#ffffff"
+            android:textStyle="bold"
             android:background="@drawable/sys_button"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"/>
@@ -38,6 +39,7 @@
             android:id="@+id/buttonLoad"
             android:text="Load"
             android:textColor="#ffffff"
+            android:textStyle="bold"
             android:background="@drawable/sys_button"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"/>
@@ -47,6 +49,7 @@
             android:id="@+id/buttonHelp"
             android:text="help"
             android:textColor="#ffffff"
+            android:textStyle="bold"
             android:background="@drawable/sys_button"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"/>
@@ -56,6 +59,7 @@
             android:id="@+id/buttonQuit"
             android:text="Quit"
             android:textColor="#ffffff"
+            android:textStyle="bold"
             android:background="@drawable/sys_button"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"/>

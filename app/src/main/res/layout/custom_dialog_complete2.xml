@@ -3,17 +3,11 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Congratulation! You have finished the lesson !"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp"/>
+    >
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="90dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
         android:src="@drawable/cup"/>
 
@@ -28,6 +22,9 @@
             android:layout_height="40dp"
             android:id="@+id/btn_cus_Home"
             android:background="@drawable/disabled"
+            android:textStyle="bold"
+            android:drawableLeft="@drawable/home"
+            android:drawablePadding="10dp"
             android:text="Home"
             android:textColor="@color/colorAccent"/>
 

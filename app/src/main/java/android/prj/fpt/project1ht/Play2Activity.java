@@ -42,7 +42,7 @@ public class Play2Activity extends RootActivity {
     int oncl = 0;
     Random r = new Random();
     String a, b, c, d, e, f, g, h, i ;
-    MediaPlayer mp;
+    MediaPlayer mp, ov;
     LinearLayout line4, line5, line2;
     RelativeLayout checkOk;
     TextView screenplay, click;
@@ -108,7 +108,7 @@ public class Play2Activity extends RootActivity {
         randomList1();
         oncl = 10;
         good = 0;
-        CountDownTimer countDownTimer = new CountDownTimer(2000, 10) {
+        CountDownTimer countDownTimer = new CountDownTimer(1000, 10) {
             public void onTick(long millisUntilFinished) {
                 screenplay.setText("1");
                 click.setText(Integer.toString(oncl));
@@ -535,7 +535,7 @@ public class Play2Activity extends RootActivity {
                         img6.setImageResource(ident_3);
                         img7.setImageResource(ident_1);
                         img8.setImageResource(ident_4);
-                        CountDownTimer countDownTimer = new CountDownTimer(2000, 10) {
+                        CountDownTimer countDownTimer = new CountDownTimer(1000, 10) {
                             public void onTick(long millisUntilFinished) {
                                 checkOk.setVisibility(View.VISIBLE);
                                 check.setVisibility(View.INVISIBLE);
@@ -963,7 +963,7 @@ public class Play2Activity extends RootActivity {
                         img10.setImageResource(ident_5);
                         img11.setImageResource(ident_4);
                         img12.setImageResource(ident_6);
-                        CountDownTimer countDownTimer = new CountDownTimer(2000, 10) {
+                        CountDownTimer countDownTimer = new CountDownTimer(1000, 10) {
                             public void onTick(long millisUntilFinished) {
                                 checkOk.setVisibility(View.VISIBLE);
                                 check.setVisibility(View.INVISIBLE);
@@ -1578,7 +1578,7 @@ public class Play2Activity extends RootActivity {
                         img10.setImageResource(ident_4);
                         img11.setImageResource(ident_5);
                         img12.setImageResource(ident_6);
-                        CountDownTimer countDownTimer = new CountDownTimer(2000, 10) {
+                        CountDownTimer countDownTimer = new CountDownTimer(1000, 10) {
                             public void onTick(long millisUntilFinished) {
                                 checkOk.setVisibility(View.VISIBLE);
                                 check.setVisibility(View.INVISIBLE);
@@ -2198,7 +2198,7 @@ public class Play2Activity extends RootActivity {
                         img14.setImageResource(ident_8);
                         img15.setImageResource(ident_8);
                         img16.setImageResource(ident_7);
-                        CountDownTimer countDownTimer = new CountDownTimer(2000, 10) {
+                        CountDownTimer countDownTimer = new CountDownTimer(1000, 10) {
                             public void onTick(long millisUntilFinished) {
                                 checkOk.setVisibility(View.VISIBLE);
                                 check.setVisibility(View.INVISIBLE);
@@ -3005,7 +3005,7 @@ public class Play2Activity extends RootActivity {
                         img14.setImageResource(ident_2);
                         img15.setImageResource(ident_1);
                         img16.setImageResource(ident_3);
-                        CountDownTimer countDownTimer = new CountDownTimer(2000, 10) {
+                        CountDownTimer countDownTimer = new CountDownTimer(1000, 10) {
                             public void onTick(long millisUntilFinished) {
                                 checkOk.setVisibility(View.VISIBLE);
                                 check.setVisibility(View.INVISIBLE);
@@ -3920,6 +3920,17 @@ public class Play2Activity extends RootActivity {
         dialog.show();
     }
 
+    public void mpOv(){
+        ov = MediaPlayer.create(Play2Activity.this, R.raw.over);
+        ov.start();
+        ov.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                ov.release();
+            }
+        });
+    }
+
     public void gOcl(){
         line2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -3946,6 +3957,7 @@ public class Play2Activity extends RootActivity {
                 gOcl();
             }
             public void onFinish() {
+                mpOv();
                 overGame();
             }
         }.start();

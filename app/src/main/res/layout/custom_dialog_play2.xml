@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     >
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="260dp"
         android:layout_height="110dp"
         android:orientation="vertical"
         >
@@ -15,7 +15,7 @@
             android:id="@+id/gameover"
             android:text="GameOver !"
             android:textSize="48dp"
-            android:textColor="#ffa25a"
+            android:textColor="#027CC0"
             android:textStyle="bold"
             android:gravity="center_horizontal" />
 
