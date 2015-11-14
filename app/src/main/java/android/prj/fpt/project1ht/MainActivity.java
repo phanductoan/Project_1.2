@@ -19,6 +19,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -32,9 +33,11 @@ public class MainActivity extends RootActivity {
     Button btnPlay, btnLoad, btnHelp, btnQuit;
     TextView tvTitle;
     Animation animClick;
-    MediaPlayer mpClick;
+    MediaPlayer mpClick, mpBg;;
     CallbackManager callbackManager;
     ShareDialog shareDialog;
+    boolean toogleMusic = true;
+    Menu mOptionMenu;
     int t = 6;
 
     @Override
@@ -55,6 +58,24 @@ public class MainActivity extends RootActivity {
         showHelp();
         quitGame();
         customFont();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (toogleMusic == false){
+            return;
+        }
+        playBackgroundMusic();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mpBg.stop();
+        if (toogleMusic == false){
+            toogleMusic = false;
+        }
     }
 
     public void playGame() {
@@ -164,7 +185,7 @@ public class MainActivity extends RootActivity {
         shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
             @Override
             public void onSuccess(Sharer.Result result) {
-          
+
             }
 
             @Override
@@ -174,7 +195,7 @@ public class MainActivity extends RootActivity {
 
             @Override
             public void onError(FacebookException error) {
-                PlayActivity.showToast(MainActivity.this,"Please check network connection !");
+                PlayActivity.showToast(MainActivity.this, "Please check network connection !");
             }
         });
     }
@@ -182,7 +203,7 @@ public class MainActivity extends RootActivity {
     public void shareFB(){
         if (ShareDialog.canShow(ShareLinkContent.class)) {
             ShareLinkContent linkContent = new ShareLinkContent.Builder()
-                    .setContentTitle("Smart Listening")
+                    .setContentTitle("Smart Listening®")
                     .setContentDescription("Phần mềm luyện nghe tiếng Anh bằng hình ảnh trên Android")
                     .setContentUrl(Uri.parse("https://www.dropbox.com/s/z12nih6yapjln0r/smart%20listening.apk?dl=0"))
                     .setImageUrl(Uri.parse("https://lh3.googleusercontent.com/-GTItp-6tnJQ/VkCCnO70DsI/AAAAAAAAAhg/laOGLv6awCI/s64-Ic42/sys_logo.png"))
@@ -226,9 +247,16 @@ public class MainActivity extends RootActivity {
         builder.show();
     }
 
+    public void playBackgroundMusic(){
+        mpBg = MediaPlayer.create(this,R.raw.sys_bgmusic);
+        mpBg.setLooping(true);
+        mpBg.start();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        mOptionMenu = menu;
         return true;
     }
 
@@ -244,7 +272,16 @@ public class MainActivity extends RootActivity {
             case R.id.itemFacebook:
                 shareFB();
                 break;
-            case R.id.itemSetting:
+            case R.id.itemSpeaker:
+                if(toogleMusic){
+                    mOptionMenu.findItem(R.id.itemSpeaker).setIcon(R.drawable.sys_actionbar_mute);
+                    mpBg.stop();
+                    toogleMusic = false;
+                }else{
+                    mOptionMenu.findItem(R.id.itemSpeaker).setIcon(R.drawable.sys_actionbar_speaker);
+                    playBackgroundMusic();
+                    toogleMusic = true;
+                }
                 break;
             case R.id.itemInfo:
                 showInfo(MainActivity.this);

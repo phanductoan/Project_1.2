@@ -62,15 +62,30 @@
         android:layout_marginTop="8dp">
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
             android:id="@+id/btn_cus_Home"
+            android:background="@drawable/disabled"
             android:text="Home"
             android:textColor="@color/colorAccent"/>
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
             android:id="@+id/btn_cus_Replay"
+            android:background="@drawable/disabled"
+            android:layout_marginLeft="10dp"
             android:text="Replay"
+            android:textColor="@color/colorAccent"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:id="@+id/btn_cus_Lever2"
+            android:background="@drawable/disabled"
+            android:layout_marginLeft="10dp"
+            android:text="Next"
             android:textColor="@color/colorAccent"/>
     </LinearLayout>
 

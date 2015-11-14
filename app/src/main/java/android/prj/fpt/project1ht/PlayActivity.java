@@ -355,7 +355,7 @@ public class PlayActivity extends RootActivity {
 
     public void alertCompleteGame() {
         alertSound(2);
-        Dialog dialog = new Dialog(this, R.style.DialogSlideAnim);
+        final Dialog dialog = new Dialog(this, R.style.DialogSlideAnim);
         dialog.setTitle("Complete Lesson");
         dialog.setContentView(R.layout.custom_dialog_complete);
         dialog.setCanceledOnTouchOutside(false); // not permit to touch outside
@@ -363,6 +363,7 @@ public class PlayActivity extends RootActivity {
         TextView countRightRef = (TextView) dialog.findViewById(R.id.tv_cus_CountRight);
         Button btnGoHomeRef = (Button) dialog.findViewById(R.id.btn_cus_Home);
         Button btnReplayRef = (Button) dialog.findViewById(R.id.btn_cus_Replay);
+        Button btnNextRef = (Button) dialog.findViewById(R.id.btn_cus_Lever2);
 
         scoreRef.setText(Integer.toString(score));
         countRightRef.setText(Integer.toString(countRight));
@@ -371,7 +372,6 @@ public class PlayActivity extends RootActivity {
             public void onClick(View v) {
                 finish();
                 saveGame = false;
-//                startActivity(new Intent(PlayActivity.this, MainActivity.class));
             }
         });
         btnReplayRef.setOnClickListener(new View.OnClickListener() {
@@ -380,6 +380,14 @@ public class PlayActivity extends RootActivity {
                 finish();
                 saveGame = false;
                 startActivity(new Intent(PlayActivity.this, PlayActivity.class));
+            }
+        });
+        btnNextRef.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                saveGame = false;
+                startActivity(new Intent(PlayActivity.this, Play2Activity.class));
             }
         });
         dialog.show();
@@ -523,6 +531,9 @@ public class PlayActivity extends RootActivity {
                 countRight = countRightReturn;
             }
             // set status count / score / countRight
+            if (count == 50){
+                count = 49;
+            }
             tvCount.setText(Integer.toString(count+1)+"/"+listData.size());
             tvScore.setText(Integer.toString(score));
             tvCountRight.setText(Integer.toString(countRight));
@@ -539,7 +550,7 @@ public class PlayActivity extends RootActivity {
             public void onClick(DialogInterface dialog, int which) {
                 finish();
                 saveGame = false;
-//                startActivity(new Intent(PlayActivity.this, MainActivity.class));
+
             }
         });
         builder.setNegativeButton("No", null);

@@ -5,9 +5,9 @@
         android:title="Facebook"
         android:icon="@drawable/sys_actionbar_fb"
         app:showAsAction="always"/>
-    <item android:id="@+id/itemSetting"
-        android:title="Setting"
-        android:icon="@drawable/sys_actionbar_setting"
+    <item android:id="@+id/itemSpeaker"
+        android:title="Speaker"
+        android:icon="@drawable/sys_actionbar_speaker"
         app:showAsAction="always"/>
     <item android:id="@+id/itemInfo"
         android:title="Info"

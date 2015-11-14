@@ -63,14 +63,17 @@
         android:gravity="center">
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:id="@+id/btn_cus_CancelLoadGame"
+            android:background="@drawable/disabled"
             android:text="Cancel"
             android:textColor="@color/colorAccent"/>
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:id="@+id/btn_cus_OKLoadGame"
+            android:background="@drawable/disabled"
+            android:layout_marginLeft="10dp"
             android:text="OK"
             android:textColor="@color/colorAccent"/>
     </LinearLayout>
